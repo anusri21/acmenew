@@ -437,7 +437,8 @@ class MainController extends Controller
         //echo $searchsource;
         if($searchsource&&$searchterm){
             
-            $pdfcat = DB::table('acme_commoncore')->whereIn('sub_category',[$searchsource,$searchterm])->orderBy('id', 'DESC')->get();
+            //$pdfcat = DB::table('acme_commoncore')->whereIn('sub_category',[$searchsource,$searchterm])->orderBy('id', 'DESC')->get();
+            $pdfcat = DB::table('acme_commoncore')->where('sub_category',$searchterm)->where('source',$searchsource)->orderBy('id', 'DESC')->get();
            
         }
         elseif($searchterm){
